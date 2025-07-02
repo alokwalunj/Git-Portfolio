@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=IBM+Plex+Mono&display=swap");
+
+@font-face {
+  font-family: 'Calibre';
+  src: url('/fonts/Calibre-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src: url('/fonts/Calibre-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibre';
+  src: url('/fonts/Calibre-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: rgb(60, 66, 55);
+  --color-foreground: rgb(230, 225, 215);
+  --color-accent: rgb(200, 180, 160);
+  --font-primary: "Calibre", sans-serif;
+  --font-secondary: "IBM Plex Mono", monospace;
+  --margin: 32px;
+  --gutter: 16px;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-primary);
+  font-size: small;
+  background-color: black;
+  max-width: 100%;
+  overflow-x: hidden;
+  color: white;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+  }
+}
+
+.scroll-down {
+  height: 50px;
+  width: 30px;
+  background-color: #000;
+  border: 2px;
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.scroll-down::before,
+.scroll-down::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  height: 10px;
+  width: 10px;
+  transform: translate(-50%, -100%) rotate(45deg);
+  border: 2px solid white;
+  border-top: transparent;
+  border-left: transparent;
+  animation: scroll-down 1s ease-in-out infinite;
+}
+
+.scroll-down::before {
+  top: 30%;
+  animation-delay: 0.3s;
+}
+
+@keyframes scroll-down {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  60% { opacity: 1; }
+  100% { 
+    top: 90%;
+    opacity: 0;
+  }
+}
+
+@keyframes moveGradient {
+  0% { background-position: top left; }
+  100% { background-position: bottom right; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.gradient-text {
+  background-image: linear-gradient(to right, #d3cce3, #800b07, #0575E6, #e9e4f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 300%;
+  background-position: -100%;
+  animation: moveGradient 5s linear infinite;
+}
+
+/* .hire-me {
+  font-family: var(--font-primary);
+  background-color: #09f755;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: black;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+} */
+
+.hire-me:hover {
+  color: white;
+  background-color: black;
+  border-color: white;
+}
+
+.project-box {
+  transition: all 0.3s ease-in-out;
+}
+
+.project-box:hover {
+  transform: scale(1.02);
+  background: black;
+  color: white;
+}
+
+.project-box:hover img {
+  filter: invert(1);
+}
+
+.social-link {
+  transition: all 0.3s ease-in-out;
+}
+
+.social-link:hover {
+  transform: scale(1.2);
+  opacity: 0.5;
+}
